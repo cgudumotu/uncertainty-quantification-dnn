@@ -1,0 +1,4 @@
+# The thesis notebooks and PDF are evidence: their SHA-256 hashes are recorded in the corrigendum.
+# Keep their bytes exactly as they are, with no line-ending conversion on commit or checkout.
+*.ipynb -text
+*.pdf binary
