@@ -50,3 +50,31 @@ inside the training range, `em_oodd` the points outside it. Each set has 10 runs
 
 The data are drawn with a fixed seed, but training is not seeded (there is no `torch.manual_seed`),
 so a re-run gives slightly different numbers.
+
+## Ishigami_thesis_files
+
+Four corrected copies. Only the predictive standard deviation in `plot_with_confidence_interval`
+changed. The copies hold no outputs yet: the saved outputs came from the old formula, so they were
+cleared, and each notebook is re-run to fill them in.
+
+| Notebook | Original sigma | Corrected sigma |
+|---|---|---|
+| `ishigami_Refactor_denn_x1.ipynb`, `_x2`, `_x3` (deep ensemble of 5, one input each) | `std(mus) ** (1/2)`: the square root of the spread of the member means; the members' predicted noise variances were computed but not used | `sqrt(var(mus) + mean(vars))` |
+| `Ishigami_refactor_donn_x2_old.ipynb` (deep operator network, input x2) | `std(mus) ** (1/2) + mean(vars) ** (1/2)`, as in the DNN notebook above | `sqrt(var(mus) + mean(vars))` |
+
+In these copies `var` divides by n (`correction=0`), as the erratum's corrected sigma does. The band
+is still mu ± 2 * sigma. `Ishigami_refactor_donn_x2_old.ipynb` stands for three identical files in
+the originals: `_x2_old`, `_x2_old(1)` and `_x2_old(2)` have the same SHA-256.
+
+Not changed:
+
+- `ishigami_Refactor_snn_x1.ipynb`: sigma is the square root of the predicted variance, already right.
+- `ishigami_Refactor_bnn_x3.ipynb`, `ishigami_Refactor_mcdnn_x1.ipynb`: these models have no noise
+  output; sigma is the spread of the sampled predictions, as designed.
+- `Ishigami_refactor_donn_x1.ipynb`, `_x2`, `_x3` (three inputs): not corrected yet. Besides the
+  sigma line, the inputs are built with an extra axis, (n, 3) to (n, 1, 3), so the branch and trunk
+  outputs broadcast to an n × n grid: every input is paired with every noise draw, the loss compares
+  every input with every target, and the prediction step averages over the inputs. Correcting sigma
+  alone would not give a band per test point.
+
+How these notebooks relate to Table 34 is covered in the erratum (E-5).
