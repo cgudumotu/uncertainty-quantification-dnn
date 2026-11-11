@@ -1,0 +1,15 @@
+Mean of Gaussian Training Loss of 10 runs: -1.2093518316745757
+Standard Deviation of Gaussian Training Loss of 10 runs: 0.21153147812115927
+
+Mean of Gaussian Testing Loss of 10 runs: -0.5007634224370122
+Standard Deviation of Gaussian Testing Loss of 10 runs: 0.32410786257310686
+
+Mean of MSE Training of 10 runs: 0.07134932819753885
+Standard Deviation of MSE Training of 10 runs: 0.0411807028140941
+
+Mean of MSE Testing of 10 runs: 0.03737806600984186
+Standard Deviation of MSE Testing of 10 runs: 0.007160326900761642
+
+Mean of percentage of 95% conf interval for 10 runs in data 60.999999999999986
+Standard Deviation of percentage of 95% conf interval for 10 runs in data 7.039570693980957
+
