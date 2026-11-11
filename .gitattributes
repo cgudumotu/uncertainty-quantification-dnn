@@ -2,3 +2,7 @@
 # Keep their bytes exactly as they are, with no line-ending conversion on commit or checkout.
 *.ipynb -text
 *.pdf binary
+
+# Run outputs (result tables and plots) record what a run produced: keep their bytes exact too.
+*.txt -text
+*.png binary

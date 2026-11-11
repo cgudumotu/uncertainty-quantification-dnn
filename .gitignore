@@ -24,3 +24,6 @@ __pycache__/
 Thumbs.db
 .vscode/
 .idea/
+
+# Old script, superseded by uq/reproduce; it prints numbers that were never checked
+reproduce_thesis_bug.py
