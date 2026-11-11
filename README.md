@@ -38,7 +38,51 @@ training data (epistemic uncertainty).
   set. A fair comparison draws both the same way.
 - The Ishigami results (Table 34) cannot be reproduced from the surviving notebooks.
 
-Corrected numbers will be added here once the erratum is final.
+## Results
+
+Corrected values come from re-running the thesis notebooks' code with fixed seeds: 10 runs per model,
+sigma computed by the law of total variance, the band still mu ± 2 sigma, on the same test set as the
+thesis. They are under review with the erratum.
+
+### Coverage of the "95%" band (Table 32)
+
+Share of test points inside each model's band, in percent, published → corrected:
+
+| Model | Full test set | Inside training range | Outside training range |
+|---|---|---|---|
+| Simple network | 63.45 → 60.9 | 65.92 → 67.5 | 47.99 → 52.8 |
+| Deep operator network | 89.05 → 64.5 | 85.42 → 67.4 | 97.0 → 62.5 |
+| Bayesian network | 13.3 → 15.0 | 8.57 → 8.1 | 21.16 → 24.7 |
+| MC dropout | 52.15 → 50.1 | 41.35 → 42.1 | 72.49 → 67.0 |
+| Deep ensemble | 59.7 → 62.5 | 36.21 → 68.2 | 88.16 → 57.3 |
+
+Only the deep operator network and the deep ensemble had sigma errors. The other three rows change by
+run-to-run variation, within 3 standard errors of the published values. Run-to-run standard
+deviation: 2–5 points on the full test set, 1–3 inside the training range, 5–10 outside it.
+
+### Test error (Table 33)
+
+Mean squared error on the full test set, published → corrected:
+
+| Model | MSE |
+|---|---|
+| Simple network | 0.147 → 0.151 |
+| Deep operator network | 0.143 → 0.145 |
+| Bayesian network | 0.352 → 0.147 |
+| MC dropout | 0.198 → 0.169 |
+| Deep ensemble | 0.154 → 0.151 |
+
+The corrected column is the error of each model's averaged prediction, computed the same way for every
+model. The published Bayesian value is that notebook's test loss, which includes a model-complexity
+penalty. All five models are close to the noise floor of the test data, about 0.135 (the error of the
+true curve itself).
+
+### Ishigami function (Table 34)
+
+Published: 76.18% of test points inside the band (95.65% inside the training range, 39.74% outside),
+over 30 runs. These numbers cannot be reproduced: the notebook that produced them was not found, and
+the surviving notebooks use a different setup. Corrected copies of four surviving notebooks are in
+`corrigendum/` and will be re-run.
 
 ## Repository
 
